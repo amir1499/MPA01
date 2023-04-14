@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Markdown Preview App</title>
+  <style>
+    /* CSS for the preview pane */
+    #preview {
+      border: 1px solid black;
+      height: 300px;
+      overflow: scroll;
+      padding: 10px;
+    }
+    
+    /* CSS for the text area */
+    #editor {
+      height: 300px;
+      width: 100%;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Markdown Preview App</h1>
+  
+  <!-- Text area for user input -->
+  <textarea id="editor" oninput="previewMarkdown()"></textarea>
+  
+  <!-- Preview pane for displaying converted markdown -->
+  <div id="preview"></div>
+  
+  <!-- JavaScript code for converting markdown to HTML and displaying it in the preview pane -->
+  <script>
+    function previewMarkdown() {
+      // Get the user input from the text area
+      const userInput = document.getElementById('editor').value;
+      
+      // Convert the markdown to HTML
+      const converter = new showdown.Converter();
+      const htmlOutput = converter.makeHtml(userInput);
+      
+      // Display the HTML in the preview pane
+      document.getElementById('preview').innerHTML = htmlOutput;
+    }
+  </script>
+  
+  <!-- Include the Showdown library for converting markdown to HTML -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+  <!--The code consists of HTML for the layout, CSS for styling, and 
+  JavaScript for converting the user's markdown input to HTML and
+displaying it in the preview pane. The code includes comments 
+explaining what each section of the code does. Note that this code
+uses the Showdown library for converting markdown to HTML, 
+which is included via a CDN.-->
+</body>
+</html>
